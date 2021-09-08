@@ -26,6 +26,7 @@ from functools import partial
 from scipy.spatial.distance import cdist
 from scipy.spatial import distance
 from sklearn.neighbors import KDTree
+import inspect
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -122,6 +123,7 @@ def recursiveTrauma(matrix, triangular_method=False): # default arg total 0
     for i in range(len(big)):
         total += signs[i] * matrix[0][i] * recursiveTrauma(big[i])
     return total
+    
 # https://www.qc.edu.hk/math/Advanced%20Level/Point_to_line.htm    
 def ramer_douglas_peucker(pts, epsilon):
     max_dist, index = 0, 0 
@@ -369,7 +371,7 @@ def lines(image):
     # print(len(cartesian_product))    
     return {"centers":np.array(centroids),"lines_image":image, "final_image":final_image}
     
-image = cv2.imread("self_sudoku_new_orient.jpeg")
+image = cv2.imread("sudoku_images/self_sudoku_new_orient.jpeg")
 #image = cv2.imread("sudoku.jpg")
 image = cv2.resize(image, (0, 0), fx=0.5, fy=0.5, interpolation = cv2.INTER_AREA)
 only_board = find_board(image)       
@@ -402,7 +404,7 @@ def solve():
                 for n in range(1, 10):
                     if possible(y, x, n):
                         matrix_sudoku[y][x] = n
-                        k=(cv2.waitKey(250) & 0XFF) if not clicked else None
+                        k=(cv2.waitKey(10) & 0XFF) if not clicked else None
                         show(only_board["warped"])
                         solve()
                         matrix_sudoku[y][x] = 0
