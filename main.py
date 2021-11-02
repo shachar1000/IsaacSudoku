@@ -88,7 +88,7 @@ def roll(array, rollN):
     
 # compute using shoelace formula which is a special case of Green's theorem 
 # 0.5 sigma xi*yi+1-xi+1*yi (same as det)
-def contourArea(contours): # numerical integration
+def contourArea(contours): 
     # integral of xdy-ydx (where curl of vector field is 1)
     contours = np.array([np.array(weird[0]) for weird in contours])
     x, y = contours[:,0], contours[:,1]
@@ -101,7 +101,7 @@ def difference(array):
         diff_list.append(b-a) 
     return np.array(diff_list)
     
-# How does one nigger compute the determinant using laplace cofactor expansion??? 🤔    
+# How does one nigga compute the determinant using laplace cofactor expansion??? 🤔    
 def recursiveTrauma(matrix, triangular_method=False): # default arg total 0
     if triangular_method:
         lu = splu(matrix) # matrix is product of upper triangular and lower
@@ -224,7 +224,7 @@ def hough_transform(image, cannied_image, thresh):
     diagonal = math.sqrt((half_height*2)**2 + (half_width*2)**2)
     rhos = np.arange(-diagonal, diagonal, 2*diagonal/180)
     thetas = np.deg2rad(np.arange(0, 180, 1)) # p (rho) = xcosa+ysina which can be achieved using matrix multiplication
-    accumulator = np.zeros((len(rhos), len(rhos)))                                                      # HUGE BUG: sin and then cos
+    accumulator = np.zeros((len(rhos), len(rhos)))                                                      # BUG: sin and then cos
     rhos_calc = np.matmul(np.argwhere(cannied_image != 0) - np.array([[half_height, half_width]]), np.array([np.sin(thetas), np.cos(thetas)]))
     print(len(rhos_calc))
     # argwhere is indices (x,y) where ...
