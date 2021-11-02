@@ -3,7 +3,7 @@ import numpy as np
 import functools
 from scipy import ndimage
 from scipy.linalg import lu
-# How does one nigger compute the determinant using laplace cofactor expansion??? 🤔    
+# How does one nigga compute the determinant using laplace cofactor expansion??? 🤔    
 def recursiveTrauma(matrix, triangular_method=False): # default arg total 0
     if triangular_method: #np.all(matrix==0)
         U, L = lu(matrix)[1:] # matrix is product of upper triangular and lower
